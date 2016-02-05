@@ -11,9 +11,9 @@ install:
   - wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz
   - tar xvzf Python-2.7.11.tgz
   - cd Python-2.7.11
-  - ./configure MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS="-arch i386" LDFLAGS="-arch i386" --prefix=$HOME/python_32bit
-  - make
-  - make install
+  - ./configure MACOSX_DEPLOYMENT_TARGET=10.6 CFLAGS="-arch i386" LDFLAGS="-arch i386" --prefix=$HOME/python_32bit >& configure.log
+  - make >& make.log
+  - make install >& make.install.log
   - export PATH=$HOME/python_32bit/bin:$PATH
   
   - wget https://pypi.python.org/packages/source/s/setuptools/setuptools-19.1.tar.gz
@@ -22,6 +22,7 @@ install:
   - python setup.py install
   - easy_install pip
   - pip install numpy Cython jinja2
+  - pip install scipy
   - pip install astropy
 
 script:
